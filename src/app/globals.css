@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Base layer. Keep global CSS limited to reset, fonts and document defaults —
+   component styling belongs in Tailwind utility classes.
+   --------------------------------------------------------------------------- */
+
+@theme inline {
+  --font-sans: var(--font-vazirmatn), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: #ffffff;
+  color: #171717;
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  /* Persian numerals and text render more clearly with slightly open spacing. */
+  letter-spacing: 0;
+}
+
+/* Tailwind v4 defaults border colour to `currentColor`; set it once here so a
+   bare `border` utility never renders as solid black. */
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-neutral-200);
+  }
+}
+
+:focus-visible {
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
